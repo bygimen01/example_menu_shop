@@ -82,15 +82,12 @@ document.addEventListener('click', function (e) {
             selected_product = products[i];
             chose_img_src = products[i];
             chose_img_src = chose_img_src.getElementsByTagName('img');
-            // console.log(chose_img_src[0].currentSrc);
             clear_products();
         }
 
 
         let current_desc = document.querySelector('.' + blocks[current].classList[1] + ' .block_header .content .selected_product');
         current_desc.innerHTML = '<p class="active_block_description">' + selected_product.textContent+ '</p>';
-
-        console.log(current);
         if (condition[++current]!=2){
             event_btn();
             products = document.querySelectorAll('.' + blocks[current].classList[1] + ' .product');
@@ -115,11 +112,6 @@ function clear_products() {
         condition[current] = 2;
         event_button.innerHTML = "<img src=\"" + chose_img_src[0].currentSrc + "\" alt=\"\">\n" +
             "                <a class=\"block_event\" src=" + current + '>zmień</a>';
-
-        // products.forEach(item => {
-        //     item.style.display = 'none';
-        // });
-
         hide_products();
     }
 
@@ -172,28 +164,12 @@ function clicker(change_section){
         current = change_section.target;
         current = current.attributes[1].value[0];
         event_btn();
-        console.log(blocks[current]);
         products = document.querySelectorAll('.' + blocks[current].classList[1] + ' .product');
         current_section(current);
-        console.log(change_section);
     }
 }
 
 document.addEventListener('click', clicker);
-
-
-// document.addEventListener('click', function (change_section) {
-//    if ((change_section.target.classList.contains('block_event')) || change_section.target.classList.contains('block_title')){
-//        current = change_section.target;
-//        current = current.attributes[1].value[0];
-//        event_btn();
-//        console.log(blocks[current]);
-//        products = document.querySelectorAll('.' + blocks[current].classList[1] + ' .product');
-//        // change_section.target.textContent = 'wybieram';
-//        current_section(current);
-//        console.log(current);
-//    }
-// });
 
 function show_products(value){
     hide_products(value);
@@ -223,7 +199,3 @@ non_active();
 
 event_btn();
 current_section(current);
-
-// let show_first = setInterval(function () {
-//
-// })
